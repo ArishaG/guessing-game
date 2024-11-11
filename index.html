@@ -1,1 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Arisha G">
+    <title>Guessing Game</title>
+</head>
+<body>
+    <script>
+        let playAgain = true;
+
+        while (playAgain) {
+            // Generate a random number between 1 and 10
+            const randomNumber = Math.floor(Math.random() * 10) + 1;
+            console.log(randomNumber); // For testing purposes, can be removed in the final version
+            
+            let guess;
+            let attempts = 0;
+            let correctGuess = false;
+
+            // Loop for player to guess the number
+            while (!correctGuess) {
+                guess = parseInt(prompt("Guess a number between 1 and 10:"));
+                
+                if (isNaN(guess)) {
+                    alert("Please enter a valid number.");
+                    continue;
+                }
+
+                attempts++;
+
+                if (guess > randomNumber) {
+                    alert("Guess was too high, guess again.");
+                } else if (guess < randomNumber) {
+                    alert("Guess was too low, guess again.");
+                } else {
+                    alert(`You guessed it in ${attempts} guesses!`);
+                    correctGuess = true;
+                }
+            }
+
+            // Ask if the user wants to play again
+            let playAgainResponse = prompt("Would you like to play again? (y/n)").toLowerCase();
+            playAgain = playAgainResponse === 'y';
+        }
+
+        // Goodbye message when the user decides not to play again
+        alert("Thanks for playing! Have a great day!");
+    </script>
+</body>
+</html>
 
